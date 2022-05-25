@@ -1,0 +1,13 @@
+<div id="<%= dom_id product %>">
+  <p>
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
+  <div>
+    <% product.images.each_with_index do |image, index|%>
+      <%= image_tag image, style: "width: 100px; height: 100px"%>
+      <%= link_to 'Remove', delete_image_path(product_id: product.id, image_id: index),
+                data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+</div>
